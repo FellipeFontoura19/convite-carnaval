@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Convite de Carnaval 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+  }
+
+  h1 {
+    color: #7a1c2e;
+  }
+
+  h2 {
+    color: #7a1c2e;
+    font-weight: normal;
+  }
+
+  .opcoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.25s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+
+  .card p {
+    padding: 12px;
+    font-weight: bold;
+    color: #7a1c2e;
+  }
+
+  #nao {
+    position: absolute;
+    width: 180px;
+  }
+
+
+  .pessoas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.pessoa {
+  text-align: center;
+}
+
+.pessoa img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.pessoa p {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #7a1c2e;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .pessoas {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>💖 Um convite especial 💖</h1>
+<h2>Vanessa, onde vamos passar o Carnaval juntinhos? 🎭✨</h2>
+<div class="pessoas">
+    <div class="pessoa">
+      <img src="imagens/fellipe.jpeg" alt="Minha foto">
+      <p>Eu 💙</p>
+    </div>
+  
+    <div class="pessoa">
+      <img src="imagens/vanessa.jpeg" alt="Foto dela">
+      <p>Você 💖</p>
+    </div>
+  </div>
+  
+
+<div class="opcoes">
+  <div class="card" onclick="escolha('Caparaó 🏔️')">
+    <img src="imagens/caparao.jpg">
+    <p>A) Caparaó 🏔️</p>
+  </div>
+
+  <div class="card" onclick="escolha('Arraial do Cabo 🌊')">
+    <img src="imagens/praia.jpeg">
+    <p>B) Arraial do Cabo 🌊</p>
+  </div>
+
+  <div class="card" onclick="escolha('Fazenda 🌾')">
+    <img src="imagens/roca.jpeg">
+    <p>C) Fazenda 🌾</p>
+  </div>
+
+  <div class="card" onclick="escolha('Juntinhos em casa 🏡❤️')">
+    <img src="imagens/juntos.jpeg">
+    <p>D) Juntinhos em casa 🏡❤️</p>
+  </div>
+</div>
+
+<!-- opção que não aceita não 😌 -->
+<div id="nao" class="card">
+  <img src="imagens/cachorro-mais-triste.jpg">
+  <p>F) Não vamos passar juntos ❌</p>
+</div>
+
+<!-- Música suave -->
+<audio id="musica" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c6e6efb6f.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const nome = "Vanessa"; 
+  const nao = document.getElementById("nao");
+  const musica = document.getElementById("musica");
+
+  function fugir() {
+    const x = Math.random() * (window.innerWidth - 200);
+    const y = Math.random() * (window.innerHeight - 220);
+    nao.style.left = x + "px";
+    nao.style.top = y + "px";
+  }
+
+  nao.addEventListener("mouseover", fugir);
+  nao.addEventListener("touchstart", fugir);
+
+  function escolha(opcao) {
+    musica.play();
+
+    document.body.innerHTML = `
+      <div style="margin-top:60px">
+        <h1 style="color:#7a1c2e">💖 ${nome}, eu sabia 💖</h1>
+        <h2 style="color:#7a1c2e">Carnaval em ${opcao}</h2>
+        <p style="font-size:20px">
+          O lugar é só um detalhe…<br>
+          O que importa é estar com você ✨
+        </p>
+      </div>
+    `;
+  }
+
+  fugir();
+</script>
+
+</body>
+</html>
